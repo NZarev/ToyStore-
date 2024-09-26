@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class ToyStore {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double tripPrice = scanner.nextDouble();
+        int puzzles = scanner.nextInt();
+        int talkingDolls = scanner.nextInt();
+        int stuffedBears = scanner.nextInt();
+        int minions = scanner.nextInt();
+        int trucks = scanner.nextInt();
+
+        double puzzlePrice = 2.60;
+        double talkingDollPrice = 3.00;
+        double stuffedBearPrice = 4.10;
+        double minionPrice = 8.20;
+        double truckPrice = 2.00;
+
+        double totalPrice = (puzzles * puzzlePrice) +
+                            (talkingDolls * talkingDollPrice) +
+                            (stuffedBears * stuffedBearPrice) +
+                            (minions * minionPrice) +
+                            (trucks * truckPrice);
+
+        if (puzzles + talkingDolls + stuffedBears + minions + trucks >= 50) {
+            totalPrice *= 0.75;
+        }
+
+        double rent = totalPrice * 0.10;
+        double finalAmount = totalPrice - rent;
+
+        if (finalAmount >= tripPrice) {
+            System.out.printf("Yes! %.2f lv left.%n", finalAmount - tripPrice);
+        } else {
+            System.out.printf("Not enough money! %.2f lv needed.%n", tripPrice - finalAmount);
+        }
+
+        scanner.close();
+    }
+}
